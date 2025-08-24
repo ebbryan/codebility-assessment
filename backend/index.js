@@ -3,6 +3,9 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const todoRoutes = require("./src/modules/todo/todo.route.js");
 
+// Middleware to parse JSON requests
+app.use(express.json());
+
 // Basic route
 app.get("/", (req, res) => {
   res.send("Hello from Express!");

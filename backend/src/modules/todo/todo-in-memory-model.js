@@ -1,2 +1,3 @@
-export let todos = [];
-export let todoId = 1;
+let todos = [];
+
+module.exports = { todos };
