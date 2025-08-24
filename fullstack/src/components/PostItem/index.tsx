@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import CalendarIcon from "../Icon/Calendar";
 import { PostsDataType } from "@/types/posts.type";
 import { useRouter } from "@bprogress/next";
+import { Calendar } from "lucide-react";
 
 const PostItem = ({ postData }: { postData: PostsDataType }) => {
   const router = useRouter();
@@ -21,7 +21,7 @@ const PostItem = ({ postData }: { postData: PostsDataType }) => {
         </p>
 
         <div className="flex items-center text-xs text-gray-500 mb-4">
-          <CalendarIcon className="w-4 h-4 mr-1" />
+          <Calendar className="w-4 h-4 mr-1" />
           {new Date(postData.date).toLocaleDateString()}
         </div>
 

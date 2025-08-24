@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Simple Blog",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_URL}/og-image.png`,
+        url: `${process.env.NEXT_PUBLIC_URL}/opengraph/landingOpenGraph.png`,
         width: 800,
         height: 600,
       },

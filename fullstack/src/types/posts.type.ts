@@ -4,4 +4,5 @@ export type PostsDataType = {
   excerpt: string;
   content: string;
   date: string;
+  image: string;
 };

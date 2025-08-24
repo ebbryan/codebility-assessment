@@ -1,6 +1,49 @@
 import { getPostById } from "@/app/actions";
 import CalendarIcon from "@/components/Icon/Calendar";
+import { MoveLeft } from "lucide-react";
 import Link from "next/link";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+
+  if (!id) {
+    return {
+      title: "Post not found!",
+      description: "The requested post does not exist.",
+    };
+  }
+
+  const post = await getPostById(Number(id));
+
+  if (post) {
+    return {
+      title: `${post.title}`,
+      description: `${post.excerpt}`,
+      openGraph: {
+        title: post.title,
+        description: post.excerpt,
+
+        url: `${process.env.NEXT_PUBLIC_URL}/posts/${id}`,
+        images: [
+          {
+            url: `${post.image}`,
+            width: 400,
+            height: 300,
+          },
+        ],
+      },
+    };
+  }
+
+  return {
+    title: "Post Not Found",
+    description: "The requested blog post does not exist.",
+  };
+}
 
 export default async function PostPage({
   params,
@@ -23,19 +66,7 @@ export default async function PostPage({
             href="/"
             className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
           >
-            <svg
-              className="w-5 h-5 mr-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 19l-7-7m0 0l7-7m-7 7h18"
-              />
-            </svg>
+            <MoveLeft className="w-4 mr-1 -mt-1" />
             Back to Posts
           </Link>
         </div>
