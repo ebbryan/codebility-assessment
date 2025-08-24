@@ -4,4 +4,8 @@ async function getAllTodos() {
   return todos;
 }
 
-module.exports = { getAllTodos };
+async function createTodo(payload) {
+  return todos.push(payload);
+}
+
+module.exports = { getAllTodos, createTodo };
