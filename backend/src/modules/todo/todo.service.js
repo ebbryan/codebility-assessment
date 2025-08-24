@@ -17,4 +17,27 @@ async function createTodo(data) {
   return payload;
 }
 
-module.exports = { getAllTodos, createTodo };
+async function updateTodo(id, data) {
+  const index = todos.findIndex((todo) => todo.id === id);
+  if (index === -1) {
+    throw new Error("Todo not found");
+  }
+
+  todos[index] = {
+    ...todos[index],
+    ...data,
+    updatedAt: new Date().toISOString(),
+  };
+  return todos[index];
+}
+
+async function deleteTodo(id) {
+  const index = todos.findIndex((todo) => todo.id === id);
+  if (index === -1) {
+    throw new Error("Todo not found");
+  }
+  const deletedTodo = todos.splice(index, 1);
+  return deletedTodo[0];
+}
+
+module.exports = { getAllTodos, createTodo, updateTodo, deleteTodo };
