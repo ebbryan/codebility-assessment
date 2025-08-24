@@ -1,5 +1,4 @@
 const { v4: uuidv4 } = require("uuid");
-const { dayjs } = require("dayjs");
 const { todos } = require("./todo-in-memory-model.js");
 
 async function getAllTodos() {
@@ -7,6 +6,7 @@ async function getAllTodos() {
 }
 
 async function createTodo(data) {
+  // i used uuid to generate unique ids for each todo item
   const payload = {
     id: uuidv4(),
     ...data,
