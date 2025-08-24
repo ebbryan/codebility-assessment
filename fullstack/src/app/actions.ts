@@ -18,7 +18,9 @@ export async function getPosts(): Promise<PostsDataType[]> {
 
 export async function getPostById(id: number): Promise<PostsDataType | null> {
   try {
-    const response = await fetch(`/api/posts?id=${id}`);
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/api/posts?id=${id}`
+    );
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

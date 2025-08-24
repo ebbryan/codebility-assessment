@@ -1,8 +1,14 @@
+"use client";
+
 import React from "react";
 import CalendarIcon from "../Icon/Calendar";
 import { PostsDataType } from "@/types/posts.type";
+import { useRouter } from "@bprogress/next";
 
 const PostItem = ({ postData }: { postData: PostsDataType }) => {
+  const router = useRouter();
+  const onRouteHandler = (id: number) =>
+    router.push(`${process.env.NEXT_PUBLIC_URL}/posts/${id}`);
   return (
     <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 border border-gray-100 overflow-hidden">
       <div className="p-6">
@@ -19,7 +25,10 @@ const PostItem = ({ postData }: { postData: PostsDataType }) => {
           {new Date(postData.date).toLocaleDateString()}
         </div>
 
-        <button className="w-full cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+        <button
+          onClick={() => onRouteHandler(postData.id)}
+          className="w-full cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
           Read More
         </button>
       </div>

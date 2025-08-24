@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { B612 } from "next/font/google";
 import "./globals.css";
+import ProgressBarProvider from "@/components/Providers/ProgressBarProvider";
 
 const b612 = B612({
   subsets: ["latin"],
@@ -37,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${b612.className} antialiased mx-5 md:mx-10 lg:mx-30`}>
-        {children}
+        <ProgressBarProvider>{children}</ProgressBarProvider>
       </body>
     </html>
   );
