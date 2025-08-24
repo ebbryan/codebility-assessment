@@ -3,7 +3,6 @@ import { getPosts } from "./actions";
 
 export default async function Home() {
   const data = await getPosts();
-
   return (
     <section className="min-h-screen bg-gray-50">
       <header className="bg-white shadow-sm border-b border-gray-200 px-6 py-4 sticky top-0 z-50">

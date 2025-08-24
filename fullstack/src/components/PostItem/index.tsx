@@ -5,10 +5,13 @@ import { PostsDataType } from "@/types/posts.type";
 import { useRouter } from "@bprogress/next";
 import { Calendar } from "lucide-react";
 
+import { formatDate } from "@/utils";
+
 const PostItem = ({ postData }: { postData: PostsDataType }) => {
   const router = useRouter();
-  const onRouteHandler = (id: number) =>
+  const onRouteHandler = (id: number) => {
     router.push(`${process.env.NEXT_PUBLIC_URL}/posts/${id}`);
+  };
   return (
     <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 border border-gray-100 overflow-hidden">
       <div className="p-6">
@@ -22,7 +25,7 @@ const PostItem = ({ postData }: { postData: PostsDataType }) => {
 
         <div className="flex items-center text-xs text-gray-500 mb-4">
           <Calendar className="w-4 h-4 mr-1" />
-          {new Date(postData.date).toLocaleDateString()}
+          {formatDate(postData.date)}
         </div>
 
         <button
