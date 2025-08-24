@@ -1,4 +1,3 @@
-import PostItem from "@/components/PostItem";
 import { getPosts } from "./actions";
 import Posts from "@/components/Posts";
 import Header from "@/components/Header";
