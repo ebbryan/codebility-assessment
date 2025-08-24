@@ -6,7 +6,7 @@ async function getAllTodos() {
 }
 
 async function createTodo(data) {
-  // i used uuid to generate unique ids for each todo item
+  // i used uuid to generate unique ids for each todo item.
   const payload = {
     id: uuidv4(),
     ...data,
