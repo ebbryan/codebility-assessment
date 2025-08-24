@@ -1,2 +1,4 @@
+const { v4: uuidv4 } = require("uuid");
+
 export let todos = [];
-export let nextId = 1;
+export let todoId = uuidv4();
