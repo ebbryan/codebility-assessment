@@ -5,6 +5,10 @@ async function getAllTodos() {
   return todos;
 }
 
+async function getTodoById(id) {
+  return todos.find((todo) => todo.id === id);
+}
+
 async function createTodo(data) {
   // i used uuid to generate unique ids for each todo item.
   const payload = {
@@ -40,4 +44,10 @@ async function deleteTodo(id) {
   return deletedTodo[0];
 }
 
-module.exports = { getAllTodos, createTodo, updateTodo, deleteTodo };
+module.exports = {
+  getAllTodos,
+  getTodoById,
+  createTodo,
+  updateTodo,
+  deleteTodo,
+};
